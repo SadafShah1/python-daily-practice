@@ -1,0 +1,11 @@
+import json
+
+data = {
+    "name": "Sadaf",
+    "field": "AI",
+    "skills": ["Python", "Problem Solving"]
+}
+
+with open("data.json", "w") as file:
+    json.dump(data, file, indent=4)
+
