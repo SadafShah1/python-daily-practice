@@ -1,1 +1,29 @@
+import json
+
+data = {
+    "name": "Sadaf",
+    "field": "AI",
+    "skills": ["Python", "Problem Solving"]
+}
+
+with open("data.json", "w") as file:
+    json.dump(data, file, indent=4)
+with open("data.json", "r") as file:
+    data = json.load(file)
+
+print(data["name"])
+students = [
+    {"name": "Ali", "age": 20},
+    {"name": "Sara", "age": 21}
+]
+try:
+    with open("file.json", "r") as f:
+        data = json.load(f)
+except FileNotFoundError:
+    data = []
+def everything():
+    pass
+def load_data(): pass
+def save_data(data): pass
+def add_record(): pass
 
