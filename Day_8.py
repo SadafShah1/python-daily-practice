@@ -10,7 +10,7 @@ def home():
 app.run(debug=True)
 @app.route("/users")
 def users():
-    return {"users": ["Ali", "Sara"]}
+    return {"users": ["Ali", "Sadaf"]}
 
 
 # practicing
@@ -20,7 +20,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return jsonify(message="Day 8 Flask Practice")
+    return jsonify(message="Hello World")
 
 @app.route("/skills")
 def skills():
