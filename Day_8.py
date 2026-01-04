@@ -24,6 +24,6 @@ def home():
 
 @app.route("/skills")
 def skills():
-    return jsonify(skills=["Python", "AI", "Problem Solving"])
+    return jsonify(skills=["Python", "AI", "Problem Solving","HTML","CSS","JavaScript",])
 
 app.run(debug=True)
