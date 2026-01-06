@@ -16,3 +16,15 @@ if cursor.rowcount == 0:
         return jsonify(error="User not found"), 404
 
     return jsonify(message="User updated successfully")
+
+             # performing deletion
+
+@app.route("/users/<int:user_id>", methods=["DELETE"])
+def delete_user(user_id):
+    conn = get_db_connection()
+    cursor = conn.execute(
+        "DELETE FROM users WHERE id=?",
+        (user_id,)
+    )
+    conn.commit()
+    conn.close()
