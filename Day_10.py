@@ -12,3 +12,7 @@ def update_user(user_id):
     )
     conn.commit()
     conn.close()
+if cursor.rowcount == 0:
+        return jsonify(error="User not found"), 404
+
+    return jsonify(message="User updated successfully")
