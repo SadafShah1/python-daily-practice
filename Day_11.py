@@ -15,3 +15,7 @@ try:
         )
         conn.commit()
         conn.close()
+except sqlite3.IntegrityError:
+        return jsonify(error="Email already exists"), 409
+
+    return jsonify(message="User registered successfully"), 201
