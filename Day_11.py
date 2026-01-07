@@ -6,3 +6,10 @@ def register():
         return jsonify(error="All fields required"), 400
 
     hashed_password = generate_password_hash(data["password"])
+    
+try:
+        conn = get_db_connection()
+        conn.execute(
+            "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
+            (data["name"], data["email"], hashed_password)
+        )
