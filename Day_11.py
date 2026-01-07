@@ -13,3 +13,5 @@ try:
             "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
             (data["name"], data["email"], hashed_password)
         )
+        conn.commit()
+        conn.close()
