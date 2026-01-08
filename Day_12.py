@@ -52,7 +52,7 @@ def token_required(f):
 
         return f(*args, **kwargs)
     return decorated
-# ---------- REGISTER ----------
+#  REGISTER 
 @app.route("/register", methods=["POST"])
 def register():
     data = request.json
@@ -74,3 +74,26 @@ def register():
         return jsonify(error="Email already exists"), 409
 
     return jsonify(message="User registered successfully"), 201
+
+#  LOGIN 
+
+@app.route("/login", methods=["POST"])
+def login():
+    data = request.json
+
+    conn = get_db_connection()
+    user = conn.execute(
+        "SELECT * FROM users WHERE email=?",
+        (data["email"],)
+    ).fetchone()
+    conn.close()
+
+    if not user or not check_password_hash(user["password"], data["password"]):
+        return jsonify(error="Invalid credentials"), 401
+
+    token = jwt.encode({ "user_id": user["id"],
+        "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)
+    }, app.config["SECRET_KEY"], algorithm="HS256")
+
+    return jsonify(token=token)
+
