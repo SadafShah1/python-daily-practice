@@ -96,4 +96,23 @@ def login():
     }, app.config["SECRET_KEY"], algorithm="HS256")
 
     return jsonify(token=token)
+    
+#  PROTECTED ROUTE 
 
+@app.route("/users", methods=["GET"])
+@token_required
+def get_users():
+    conn = get_db_connection()
+    users = conn.execute(
+        "SELECT id, name, email FROM users"
+    ).fetchall()
+    conn.close()
+
+    return jsonify([dict(user) for user in users])
+
+
+#  MAIN 
+
+if __name__ == "__main__":
+    init_db()
+    app.run(debug=True)
