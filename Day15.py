@@ -66,3 +66,46 @@ def borrow_book(books):
 
     print("Book not found\n")
 
+def return_book(books):
+    title = input("Enter book title to return: ").lower()
+
+    for b in books:
+        if b["title"].lower() == title:
+            b["status"] = "available"
+            save_books(books)
+            print("Book returned successfully\n")
+            return
+
+    print("Book not found\n")
+
+
+def main():
+    books = load_books()
+
+    while True:
+        print("1. Add Book")
+        print("2. View Books")
+        print("3. Search Book")
+        print("4. Borrow Book")
+        print("5. Return Book")
+        print("6. Exit")
+
+        choice = input("Choose option: ")
+
+        if choice == "1":
+            add_book(books)
+        elif choice == "2":
+            view_books(books)
+        elif choice == "3":
+            search_book(books)
+        elif choice == "4":
+            borrow_book(books)
+        elif choice == "5":
+            return_book(books)
+        elif choice == "6":
+            break
+        else:
+            print("Invalid choice\n")
+
+
+main()
