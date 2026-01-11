@@ -30,3 +30,39 @@ def add_book(books):
         "author": author,
         "status": "available"
     })
+save_books(books)
+    print("Book added successfully\n")
+
+
+def view_books(books):
+    if not books:
+        print("No books available\n")
+        return
+
+    for i, b in enumerate(books, start=1):
+        print(f"{i}. {b['title']} by {b['author']} [{b['status']}]")
+    print()
+def search_book(books):
+    title = input("Enter book title to search: ").lower()
+
+    for b in books:
+        if b["title"].lower() == title:
+            print(f"Found: {b['title']} by {b['author']} [{b['status']}]\n")
+            return
+
+    print("Book not found\n")
+def borrow_book(books):
+    title = input("Enter book title to borrow: ").lower()
+
+    for b in books:
+        if b["title"].lower() == title:
+            if b["status"] == "available":
+                b["status"] = "borrowed"
+                save_books(books)
+                print("Book borrowed successfully\n")
+            else:
+                print("Book already borrowed\n")
+            return
+
+    print("Book not found\n")
+
