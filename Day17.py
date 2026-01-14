@@ -12,3 +12,15 @@ class Student:
     def is_pass(self):
         return self.marks >= 40
 
+
+student1 = Student("Ali", "AI-101", 78)
+student2 = Student("Sara", "AI-102", 35)
+
+student1.display()
+print("Pass:", student1.is_pass())
+
+print()
+
+student2.display()
+print("Pass:", student2.is_pass())
+
