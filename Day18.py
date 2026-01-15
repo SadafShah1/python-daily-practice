@@ -15,3 +15,6 @@ class Admin(User):
         print(f"{self.username} deleted user {user}")
 
 admin = Admin("admin01", "admin@mail.com", "Super Admin")
+
+admin.login()
+admin.delete_user("test_user")
