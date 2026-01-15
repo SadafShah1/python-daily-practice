@@ -13,3 +13,5 @@ class Admin(User):
 
     def delete_user(self, user):
         print(f"{self.username} deleted user {user}")
+
+admin = Admin("admin01", "admin@mail.com", "Super Admin")
