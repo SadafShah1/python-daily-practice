@@ -16,3 +16,10 @@ class Circle(Shape):
 
     def area(self):
         return 3.14 * self.radius * self.radius
+shapes = [
+    Rectangle(5, 4),
+    Circle(3)
+]
+
+for s in shapes:
+    print("Area:", s.area())
